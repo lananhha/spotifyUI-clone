@@ -1,13 +1,60 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* font */
+
+@font-face {
+    font-family: 'CircularSp';
+    src: url('/src/assets/fonts/CircularSp-Bold.woff2');
+    font-weight: 700;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+    font-family: 'CircularSp';
+    src: url('/src/assets/fonts/CircularSp-Book.woff2');
+    font-weight: 350;
 }
+
+@font-face {
+    font-family: 'CircularSp';
+    src: url('/src/assets/fonts/CircularSpTitle-Black.woff2');
+    font-weight: 900;
+}
+
+@layer base{
+    body{
+        font-family: 'CircularSp';
+        line-height: 1.6;
+        font-size: 16px;
+        font-weight: 350;
+    }
+    :root{
+        --sidebar-width: 241px;
+        --header-height: 64px;
+        --playlist-background-min-height: 340px;
+        --now-playing-height: 90px;
+        --episode-max-width: 732px;
+    }
+}
+
+html *::-webkit-scrollbar {
+    display: none;
+    border-radius: 0;
+    width: 10px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: rgb(179,179,179)
+}
+
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* img{
+    max-width: none;
+} */
