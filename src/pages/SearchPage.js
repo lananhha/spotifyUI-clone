@@ -15,7 +15,7 @@ function SearchPage() {
         }
     }, [debounce])
     return (
-        <div className="flex flex-col gap-4 text-white w-contentWidth min-h-0 ml-leftContent pt-mtHeader px-8 bg-bgHomePage pb-nowPlayingHeight isolate">
+        <div className="flex flex-col gap-4 text-white w-contentWidth min-h-screen ml-leftContent pt-mtHeader px-8 bg-bgHomePage pb-nowPlayingHeight isolate">
             {keySearch && <NavSearch />}
             <Outlet></Outlet>
         </div>

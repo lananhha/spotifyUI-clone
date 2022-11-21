@@ -13,10 +13,11 @@ import TrackItem from '../modules/playlist/TrackItem'
 import Loading from '../component/Loading'
 import { fetchMetaDataAlbumPage, fetchListTrackAlbum } from "../feature/AlbumPageSlice";
 import { changeBgHeader } from "../feature/PlaylistSlice";
-import { updateCurrentIndexSong, updateCurrentTrackId, clickPauseButton, clickPlayButton, updateCurrentPlaylistPlaying } from "../feature/CurrentSlice";
+import { updateCurrentIndexSong, updateCurrentTrackId, clickPauseButton, clickPlayButton, updateCurrentPlaylistPlaying, addCurrentPageId } from "../feature/CurrentSlice";
 function AlbumPage() {
     const isPlaying = useSelector(state => state.currentState.isPlaying)
     const currentTrackId = useSelector(state => state.currentState.currentTrackId)
+    const currentPageId = useSelector(state => state.currentState.currentPageId)
     const { metaDataAlbumPage, listTrackAlbum, loading, loadingTrack } = useSelector(state => state.albumPage)
     const dispatch = useDispatch()
     const { id } = useParams()
@@ -52,6 +53,13 @@ function AlbumPage() {
             dispatch(clickPlayButton())
             return
         }
+
+        if(currentPageId && id !== currentPageId) {
+            dispatch(addCurrentPageId(id))
+        }else{
+            dispatch(addCurrentPageId(id))
+        }
+
         dispatch(clickPlayButton())
         const firstTrack = listTrackAlbum[0].id
         dispatch(updateCurrentTrackId(firstTrack))
@@ -80,7 +88,7 @@ function AlbumPage() {
 
     if (loading || loadingTrack) {
         return (
-            <div className="playlist-page w-contentWidth min-h-full bg-bgHomePage  ml-leftContent flex justify-center items-center">
+            <div className="playlist-page w-contentWidth min-h-screen bg-bgHomePage  ml-leftContent flex justify-center items-center">
                 <Loading />
             </div>
         )

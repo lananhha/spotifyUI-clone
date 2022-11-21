@@ -6,11 +6,11 @@ import NowPlayingBar from '../modules/player-control/NowPlayingBar';
 import BannerSignUp from "../modules/BannerSignUp";
 function MainLayout() {
     return ( 
-        <div className="h-screen w-full relative bg-black">
+        <div>
             <Sidebar />
             <Header />
             <NowPlayingBar />
-            <Outlet></Outlet>
+            {/* <Outlet></Outlet> */}
             {/* <BannerSignUp /> */}
         </div>
      );

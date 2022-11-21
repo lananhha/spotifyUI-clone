@@ -5,7 +5,8 @@ const initialState = {
     metadataPlaylistPage: {},
     trackList: [],
     bgHeaderPrimary: false,
-    loading: true
+    loading: true,
+    loadingTrackList: true
 }
 
 export const fetchPlaylistMetaData = createAsyncThunk('playlistPage/getDataPlaylistPage', async (playlistId) => {
@@ -41,6 +42,13 @@ const playlistSlice = createSlice({
         })
         builder.addCase(fetchTrackListData.fulfilled, (state, action) => {
             state.trackList = action.payload
+            state.loadingTrackList = false
+        })
+        builder.addCase(fetchTrackListData.pending, (state, action) => {
+            state.loadingTrackList = true
+        })
+        builder.addCase(fetchTrackListData.rejected, (state, action) => {
+            state.loadingTrackList = true
         })
     }
 })

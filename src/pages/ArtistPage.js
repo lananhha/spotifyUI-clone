@@ -14,9 +14,10 @@ import HeadingSearch from '../modules/search/HeadingSearch'
 import * as reselect from '../reselect/reselectArtistPage'
 import { changeBgHeader } from "../feature/PlaylistSlice";
 import { ButtonPauseLarge, ButtonPlayLarge } from "../modules/card-song/ButtonLarge";
-import { clickPauseButton, clickPlayButton, updateCurrentIndexSong, updateCurrentTrackId, updateCurrentPlaylistPlaying } from "../feature/CurrentSlice";
+import { clickPauseButton, clickPlayButton, updateCurrentIndexSong, updateCurrentTrackId, updateCurrentPlaylistPlaying, addCurrentPageId } from "../feature/CurrentSlice";
 function ArtistPage() {
     const currentTrackId = useSelector(state => state.currentState.currentTrackId)
+    const currentPageId = useSelector(state => state.currentState.currentPageId)
     const { metaDataArtistPage, loading } = useSelector(state => state.artistPage)
     const { discographyArtistPage } = useSelector(createStructuredSelector({
         discographyArtistPage: reselect.discographyArtistPage
@@ -39,6 +40,11 @@ function ArtistPage() {
         if (currentTrackId && listPopularTrackId.find(item => item === currentTrackId)) {
             dispatch(clickPlayButton())
             return
+        } 
+        if(currentPageId && id !== currentPageId) {
+            dispatch(addCurrentPageId(id))
+        }else{
+            dispatch(addCurrentPageId(id))
         }
         dispatch(clickPlayButton())
         const firstTrack = listPopularTrack[0].id
@@ -69,7 +75,7 @@ function ArtistPage() {
 
     if (loading) {
         return (
-            <div className="playlist-page w-contentWidth min-h-full bg-bgHomePage ml-leftContent flex justify-center items-center">
+            <div className="playlist-page w-contentWidth min-h-screen bg-bgHomePage ml-leftContent flex justify-center items-center">
                 <Loading />
             </div>
         )

@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import getTrackSound from '../api/getTrackSound'
 const initialState = {
-    currentPlaylistId: null,
+    currentPageId: null,
     currentPlaylistPlaying: [],
     currentTrackId: null,
     currentTime: 0,
@@ -27,8 +27,8 @@ const CurrentSlice = createSlice({
     name: 'nowPlay',
     initialState,
     reducers: {
-        addCurrentPlaylist(state, action) {
-            state.currentPlaylistId = action.payload
+        addCurrentPageId(state, action) {
+            state.currentPageId = action.payload
             localStorage.setItem("spotify_nowplay", JSON.stringify(state))
         },
         updateCurrentTrackId(state, action) {
@@ -95,7 +95,7 @@ const CurrentSlice = createSlice({
 
 const {actions, reducer} = CurrentSlice
 export const {
-                addCurrentPlaylist,
+                addCurrentPageId,
                 clickPlayButton,
                 clickPauseButton, 
                 updateCurrentTrackId, 

@@ -36,7 +36,7 @@ function PodcastPage() {
     }, [])
     if (loading || loadingListPodcastEpisodes) {
         return (
-            <div className="playlist-page w-contentWidth min-h-full bg-bgHomePage  ml-leftContent flex justify-center items-center">
+            <div className="playlist-page w-contentWidth min-h-screen bg-bgHomePage  ml-leftContent flex justify-center items-center">
                 <Loading />
             </div>
         )

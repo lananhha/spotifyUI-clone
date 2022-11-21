@@ -14,13 +14,14 @@ import { changeBgHeader } from '../feature/PlaylistSlice';
 import MetaDataBgImg from '../modules/over-view-section/MetaDataBgImg';
 import { HeartIcon } from '../component/Icon';
 import { ButtonPauseLarge, ButtonPlayLarge } from '../modules/card-song/ButtonLarge';
-import { clickPlayButton, clickPauseButton, updateCurrentTrackId, updateCurrentPlaylistPlaying, updateCurrentIndexSong } from '../feature/CurrentSlice';
+import { clickPlayButton, clickPauseButton, updateCurrentTrackId, updateCurrentPlaylistPlaying, updateCurrentIndexSong, addCurrentPageId } from '../feature/CurrentSlice';
 function Playlist() {
     const dispatch = useDispatch()
     const isPlaying = useSelector(state => state.currentState.isPlaying)
     const currentTrackId = useSelector(state => state.currentState.currentTrackId)
     const trackList = useSelector(state => state.playlistPage.trackList)
-    const { metadataPlaylistPage, loading } = useSelector(state => state.playlistPage);
+    const { metadataPlaylistPage, loading, loadingTrackList } = useSelector(state => state.playlistPage);
+    const currentPageId = useSelector(state => state.currentState.currentPageId)
     const listTrackId = trackList.map((item) => item.id)
     const { id } = useParams()
     useEffect(() => {
@@ -49,6 +50,11 @@ function Playlist() {
             dispatch(clickPlayButton())
             return
         }
+        if(currentPageId && id !== currentPageId) {
+            dispatch(addCurrentPageId(id))
+        }else{
+            dispatch(addCurrentPageId(id))
+        }
         dispatch(clickPlayButton())
         const firstTrack = trackList[0].id
         dispatch(updateCurrentTrackId(firstTrack))
@@ -62,7 +68,7 @@ function Playlist() {
 
     if (loading) {
         return (
-            <div className="playlist-page w-contentWidth min-h-full bg-bgHomePage  ml-leftContent flex justify-center items-center">
+            <div className="playlist-page w-contentWidth min-h-screen bg-bgHomePage  ml-leftContent flex justify-center items-center">
                 <Loading />
             </div>
         )

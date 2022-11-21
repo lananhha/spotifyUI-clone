@@ -4,15 +4,16 @@ import { faEllipsis, faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams} from "react-router-dom";
 import { createStructuredSelector } from 'reselect'
 
 import * as reselect from '../../reselect/reselectArtistPage'
 import * as reselectSearch from "../../reselect/reselectSearchPage";
-import { clickPlayButton, clickPauseButton, updateCurrentTrackId, updateListSongPlayed, updateCurrentPlaylistPlaying, updateCurrentIndexSong } from "../../feature/CurrentSlice";
+import { clickPlayButton, clickPauseButton, updateCurrentTrackId, updateListSongPlayed, updateCurrentPlaylistPlaying, updateCurrentIndexSong, addCurrentPageId } from "../../feature/CurrentSlice";
 function TrackItem({ dataTrack, serial, showAddDay = true, showAlbum = true, showImg = true, showArtistName = true }) {
     const dispatch = useDispatch()
     const location = useLocation()
+    const {id} = useParams()
     const { discographyArtistPage } = useSelector(createStructuredSelector({
         discographyArtistPage: reselect.discographyArtistPage
     }))
@@ -23,6 +24,7 @@ function TrackItem({ dataTrack, serial, showAddDay = true, showAlbum = true, sho
     const listTrackAlbum = useSelector(state => state.albumPage.listTrackAlbum)
     const currentTrackId = useSelector((state) => state.currentState.currentTrackId)
     const isPlaying = useSelector(state => state.currentState.isPlaying)
+    const currentPageId = useSelector(state => state.currentState.currentPageId)
 
     const handleClickPlayButton = () => {
         // updateCurrentPlaylistPlaying
@@ -37,6 +39,13 @@ function TrackItem({ dataTrack, serial, showAddDay = true, showAlbum = true, sho
         }
         if (location.pathname.includes('search/song')) {
             dispatch(updateCurrentPlaylistPlaying(resultSong.items))
+        }
+
+        //addCurrentPageId
+        if(currentPageId && id !== currentPageId) {
+            dispatch(addCurrentPageId(id))
+        }else{
+            dispatch(addCurrentPageId(id))
         }
 
         // updateCurrentIndexSong
