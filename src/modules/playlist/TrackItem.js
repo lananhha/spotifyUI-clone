@@ -27,6 +27,22 @@ function TrackItem({ dataTrack, serial, showAddDay = true, showAlbum = true, sho
     const currentPageId = useSelector(state => state.currentState.currentPageId)
 
     const handleClickPlayButton = () => {
+        // updateCurrentTrackId
+        if (dataTrack.id !== currentTrackId) {
+            dispatch(updateCurrentTrackId(dataTrack.id))
+        }
+
+        //update isPlaying
+        const actionClick = clickPlayButton()
+        dispatch(actionClick)
+
+        //addCurrentPageId
+        if(currentPageId && id !== currentPageId) {
+            dispatch(addCurrentPageId(id))
+        }else{
+            dispatch(addCurrentPageId(id))
+        }
+
         // updateCurrentPlaylistPlaying
         if (location.pathname.includes('playlist')) {
             dispatch(updateCurrentPlaylistPlaying(trackList))
@@ -41,23 +57,10 @@ function TrackItem({ dataTrack, serial, showAddDay = true, showAlbum = true, sho
             dispatch(updateCurrentPlaylistPlaying(resultSong.items))
         }
 
-        //addCurrentPageId
-        if(currentPageId && id !== currentPageId) {
-            dispatch(addCurrentPageId(id))
-        }else{
-            dispatch(addCurrentPageId(id))
-        }
 
         // updateCurrentIndexSong
         dispatch(updateCurrentIndexSong(serial - 1))
 
-        // updateCurrentTrackId
-        if (dataTrack.id !== currentTrackId) {
-            dispatch(updateCurrentTrackId(dataTrack.id))
-        }
-        //update isPlaying
-        const actionClick = clickPlayButton()
-        dispatch(actionClick)
     }
 
     const handleClickPauseButton = () => {
