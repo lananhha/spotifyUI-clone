@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "./static/css/main.a59adac7.css",
+    "main.js": "./static/js/main.e6ebde55.js",
+    "static/js/787.4762dbf4.chunk.js": "./static/js/787.4762dbf4.chunk.js",
+    "static/media/CircularSp-Bold.woff2": "./static/media/CircularSp-Bold.8f862e2aafc540b1cca0.woff2",
+    "static/media/CircularSpTitle-Black.woff2": "./static/media/CircularSpTitle-Black.fceaf068cd72cf27e236.woff2",
+    "static/media/CircularSp-Book.woff2": "./static/media/CircularSp-Book.4d08acc2822e73fe6c91.woff2",
+    "static/media/card_img.jpg": "./static/media/card_img.17a94bb25b1e6a196318.jpg",
+    "static/media/user_img.jpg": "./static/media/user_img.6257f558b800ed6b2c4d.jpg",
+    "static/media/genres_img.jpg": "./static/media/genres_img.49af3c8c7b5c6af72d78.jpg",
+    "index.html": "./index.html",
+    "main.a59adac7.css.map": "./static/css/main.a59adac7.css.map",
+    "main.e6ebde55.js.map": "./static/js/main.e6ebde55.js.map",
+    "787.4762dbf4.chunk.js.map": "./static/js/787.4762dbf4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a59adac7.css",
+    "static/js/main.e6ebde55.js"
+  ]
+}
