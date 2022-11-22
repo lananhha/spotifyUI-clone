@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const options =  {
     method: 'GET',
     url: 'https://spotify-scraper.p.rapidapi.com/v1/home',
@@ -8,7 +7,6 @@ const options =  {
       'X-RapidAPI-Host': 'spotify-scraper.p.rapidapi.com'
     }
   };
-  
 const getHome = async () => {
     const response = await axios.request(options);
     const result = response.status === 200 ? response.data : {};

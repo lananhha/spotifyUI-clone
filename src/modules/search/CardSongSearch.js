@@ -20,28 +20,28 @@ function CardSongSearch({ children, type, src, description, time, day, imgSmall,
             dispatch(addCurrentPageId(id))
             if (type === 'playlist') {
                 const trackListData = await getTrackListPlaylist(id)
-                dispatch(clickPlayButton())
                 const trackList = trackListData.contents.items
                 const firstTrack = trackList[0].id
                 dispatch(updateCurrentTrackId(firstTrack))
+                dispatch(clickPlayButton())
                 dispatch(updateCurrentPlaylistPlaying(trackList))
                 dispatch(updateCurrentIndexSong(0))
             }
             if (type === 'album') {
                 const trackListData = await getListTrackAlbum(id)
-                dispatch(clickPlayButton())
                 const trackList = trackListData.tracks.items
                 const firstTrack = trackList[0].id
                 dispatch(updateCurrentTrackId(firstTrack))
+                dispatch(clickPlayButton())
                 dispatch(updateCurrentPlaylistPlaying(trackList))
                 dispatch(updateCurrentIndexSong(0))
             }
             if (type === 'artist') {
                 const overViewArtist = await getOverviewArtist(id)
-                dispatch(clickPlayButton())
                 const trackList = overViewArtist.discography.topTracks
                 const firstTrack = trackList[0].id
                 dispatch(updateCurrentTrackId(firstTrack))
+                dispatch(clickPlayButton())
                 dispatch(updateCurrentPlaylistPlaying(trackList))
                 dispatch(updateCurrentIndexSong(0))
             }

@@ -69,7 +69,6 @@ function NowPlayingBar() {
         dispatch(updateCurrentIndexSong(nextSongIndex))
     }
 
-    console.log('re-render');
     return (
         <NowPlayingBarStyles>
             {currentTrackId ? (

@@ -9,6 +9,7 @@ import PodcastPage from './pages/PodcastPage'
 import ArtistPage from './pages/ArtistPage'
 import AlbumPage from './pages/AlbumPage'
 import LovedSongPage from './pages/LovedSongPage'
+import LyricPage from './pages/LyricPage';
 import AllResultSearch from './modules/search/router-search-page/AllResultSearch'
 import ArtistResultSearch from './modules/search/router-search-page/ArtistResultSearch'
 import AlbumResultSearch from './modules/search/router-search-page/AlbumResultSearch'
@@ -41,6 +42,7 @@ function App() {
             <Route path='/album/:id' element={<AlbumPage />}></Route>
             <Route path='/love-song' element={<LovedSongPage />}></Route>
             <Route path='/playlist/:id' element={<Playlist />}></Route>
+            <Route path='/lyric' element={<LyricPage />}></Route>
           </Routes>
         </div>
       </Router>

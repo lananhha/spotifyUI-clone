@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useRef, memo } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { QueueIcon, ConnectToDeviceIcon, VolumeIcon, MicrophoneIcon } from '../../component/Icon'
 import { updateVolume, clickMuteButton, getPrevVolume } from '../../feature/CurrentSlice';
@@ -8,6 +9,7 @@ function NowPlayingRight() {
     const dispatch = useDispatch()
     const currentVolume = useSelector(state => state.currentState.currentVolume)
     const prevVolume = useSelector(state => state.currentState.prevVolume)
+    const currentTrackId = useSelector(state => state.currentState.currentTrackId)
     const currentVolumeRef = useRef()
     const isMute = useSelector(state => state.currentState.isMute)
 
@@ -27,9 +29,9 @@ function NowPlayingRight() {
     return (
         <NowPlayingRightStyles >
             <div className="w-full flex  justify-end items-center">
-                <button className="icon-now-playing">
+                <NavLink to={`/lyric`} className={({isActive}) => `w-8 h-8 flex justify-start items-center ${isActive ? 'text-primary' : 'text-[#ffffffb3]'}`}>
                     <MicrophoneIcon />
-                </button>
+                </NavLink>
                 <button className="icon-now-playing">
                     <QueueIcon />
                 </button>

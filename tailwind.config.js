@@ -9,7 +9,10 @@ module.exports = {
         textColor2: '#a7a7a7',
         bgHeader: 'rgba(16,16,16,0.8)',
         bgHomePage: '#121212',
-        primary: '#1ed760'
+        primary: '#1ed760',
+        lyricColor: '#002e12',
+        lyricColorPass: '#ffffffb3',
+        bgLyricPage: '#008b38'
       },
       
       spacing :{
