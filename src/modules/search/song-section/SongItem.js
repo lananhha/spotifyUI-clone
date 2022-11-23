@@ -49,7 +49,7 @@ function SongItem({ data }) {
                 </div>
                 <div className='w-[55%]'>
                     <NameSong className={ (data.id === currentTrackId) && 'text-primary' } name={data.name} />
-                    <NameArtist className='leading-4' name={data.artists[0].name} />
+                    <NameArtist to={`/artist/${data.artists[0].id}`} className='leading-4' name={data.artists[0].name} />
                 </div>
                 <div className='flex flex-1 justify-between items-center'>
                     <span className="heart-icon text-textColor hover:text-white text-base hidden">

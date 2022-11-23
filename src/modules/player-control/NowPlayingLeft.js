@@ -29,11 +29,11 @@ function NowPlayingLeft() {
                     <img className="object-cover w-14 h-14 " src={metaDataTrackPlaying.album.cover[2].url} />
                 </div>
                 <div className="mx-4">
-                    <h4 className="text-sm font-normal text-white hover:underline cursor-pointer">
-                        <Link className="track-name" to='/'>{metaDataTrackPlaying.name}</Link>
+                    <h4 className=" track-name text-sm font-normal text-white cursor-pointer">
+                        {metaDataTrackPlaying.name}
                     </h4>
                     <span className="text-xs font-normal text-textColor hover:underline cursor-pointer">
-                        <Link>{metaDataTrackPlaying.artists[0].name}</Link>
+                        <Link to={`/artist/${metaDataTrackPlaying.artists[0].id}`}>{metaDataTrackPlaying.artists[0].name}</Link>
                     </span>
                 </div>
                 <button className="icon-now-playing flex justify-center items-center">

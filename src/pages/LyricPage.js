@@ -25,7 +25,7 @@ function LyricPage() {
             }
         }
         fetchLyric()
-    }, [])
+    }, [currentTrackId])
 
     // useEffect(() => {
     //     if(!loading) {

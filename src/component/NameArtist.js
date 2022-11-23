@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-function NameArtist({name, className}) {
+function NameArtist({name, className, to}) {
     return ( 
         <NameArtistStyles>
             <span className={`artist-name w-full text-sm text-textColor cursor-pointer ${className}`}>
-                <Link className="hover:underline">{name}</Link>
+                <Link to={to} className="hover:underline">{name}</Link>
             </span>
             </NameArtistStyles>
      );
