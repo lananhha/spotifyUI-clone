@@ -40,7 +40,7 @@ function App() {
             <Route path='/podcast/:id' element={<PodcastPage />}></Route>
             <Route path='/artist/:id' element={<ArtistPage />}></Route>
             <Route path='/album/:id' element={<AlbumPage />}></Route>
-            <Route path='/love-song' element={<LovedSongPage />}></Route>
+            <Route path='/love+song' element={<LovedSongPage />}></Route>
             <Route path='/playlist/:id' element={<Playlist />}></Route>
             <Route path='/lyric' element={<LyricPage />}></Route>
           </Routes>
