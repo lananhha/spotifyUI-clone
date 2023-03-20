@@ -28,10 +28,6 @@ function AudioComponent() {
         }
     }, [currentTime])
 
-    // useEffect(() => {
-
-    // }, [currentVolume])
-
 
     if (loadingSound) {
         return
@@ -86,7 +82,7 @@ function AudioComponent() {
                     volume={currentVolume}
                     onProgress={handleProgress}
                     onEnded={handelTrackEnd}
-                    onError={(e) => console.log(e)}
+                    // onError={(e) => console.log(e)}
                 ></ReactPlayer>
                 {/* <audio src={currentTrackSoundInfo.soundcloudTrack.audio[0].url} /> */}
             </div>

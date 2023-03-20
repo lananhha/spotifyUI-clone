@@ -14,6 +14,6 @@ const getLyric = async (trackId) => {
   const response = await axios.request(options(trackId))
   const result = response.status === 200 ? response.data : false
   return result
-}
+} 
 
 export default getLyric

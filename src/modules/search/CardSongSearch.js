@@ -54,7 +54,7 @@ function CardSongSearch({ children, type, src, description, time, day, imgSmall,
     return (
         <CardSongSearchStyles>
             <div className='card-song p-4 w-full bg-[#181818] rounded-md cursor-pointer relative'>
-                <Link to={`/${type}/${id}`}>
+                <Link to={`/${type}/${id}`}> 
                     <div className='w-full' >
                         <div className={`${type === 'artist' || type === 'profile' ? ' w-[193px] h-[193px] rounded-full mb-4 overflow-hidden' : 'w-[193px] h-[193px] mb-4 rounded-md overflow-hidden'}`}>
                             <img src={src} className='w-full h-full' />

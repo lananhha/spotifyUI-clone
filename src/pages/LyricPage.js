@@ -7,6 +7,7 @@ import Loading from "../component/Loading";
 function LyricPage() {
     const [lyric, setLyric] = useState([])
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
     const lyricRef = useRef()
     const currentTime = useSelector(state => state.currentState.currentTime)
     const currentTrackId = useSelector(state => state.currentState.currentTrackId)
@@ -18,10 +19,11 @@ function LyricPage() {
                     if(data) {
                         setLyric(data)
                         setLoading(false)
+                        setError(false)
                     }
                 }
             } catch (error) {
-                console.log(error);
+                setError(true)
             }
         }
         fetchLyric()
@@ -35,13 +37,14 @@ function LyricPage() {
     //     }
     // }, [currentTime])
 
-    if (loading && currentTrackId) {
+    if (loading && currentTrackId && !error) {
         return (
             <div className="playlist-page w-contentWidth min-h-screen bg-bgLyricPage px-36 ml-leftContent flex justify-center items-center">
                 <Loading />
             </div>
         )
     }
+
     if(!currentTrackId) {
         return (
             <div className="playlist-page w-contentWidth min-h-screen bg-bgLyricPage font-bold text-2xl px-36 ml-leftContent flex justify-center items-center">
@@ -49,6 +52,16 @@ function LyricPage() {
             </div>
         )
     }
+
+
+    if(error) {
+        return (
+            <div className="playlist-page w-contentWidth min-h-screen bg-bgLyricPage font-bold text-2xl px-36 ml-leftContent flex justify-center items-center">
+                This song has no lyric
+            </div>
+        )
+    }
+
     return (
         <div className="w-contentWidth min-h-screen text-lyricColor bg-bgLyricPage ml-leftContent pt-mtHeader pb-nowPlayingHeight px-36 isolate">
             {lyric.split('[').map((item, index) => (
