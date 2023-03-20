@@ -22,6 +22,8 @@ import UserResultSearch from './modules/search/router-search-page/UserResultSear
 function App() {
   console.log('new_branch')
   console.log('new_feature')
+  console.log('feature_1')
+  console.log('rebase')
   return (
     <Suspense>
       <Router>
@@ -42,7 +44,7 @@ function App() {
             <Route path='/podcast/:id' element={<PodcastPage />}></Route>
             <Route path='/artist/:id' element={<ArtistPage />}></Route>
             <Route path='/album/:id' element={<AlbumPage />}></Route>
-            <Route path='/love-song' element={<LovedSongPage />}></Route>
+            <Route path='/love_song' element={<LovedSongPage />}></Route>
             <Route path='/playlist/:id' element={<Playlist />}></Route>
             <Route path='/lyric' element={<LyricPage />}></Route>
           </Routes>
